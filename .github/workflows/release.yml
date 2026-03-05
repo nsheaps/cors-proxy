@@ -1,0 +1,61 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      increment:
+        description: Version increment
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+      dry-run:
+        description: Dry run (no publish)
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - name: Load secrets from 1Password
+        id: secrets
+        uses: 1password/load-secrets-action@v2
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_TOKEN }}
+          GITHUB_PAT_N8AGENT: op://heapsinfra/gha--github--n8agent-pat/credential
+
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ env.GITHUB_PAT_N8AGENT }}
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "n8agent[bot]"
+          git config user.email "n8agent@users.noreply.github.com"
+
+      - name: Install mise
+        uses: jdx/mise-action@v2
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Quality gate
+        run: npm run validate
+
+      - name: Release
+        run: npm run release:ci -- --increment ${{ inputs.increment }} ${{ inputs.dry-run == true && '--dry-run' || '' }}
+        env:
+          GITHUB_TOKEN: ${{ env.GITHUB_PAT_N8AGENT }}

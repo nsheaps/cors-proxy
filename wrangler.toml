@@ -1,0 +1,7 @@
+name = "private-pages-cors-proxy"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+
+# Managed by Pulumi in nsheaps/iac
+# [vars]
+# ALLOWED_ORIGINS = ""

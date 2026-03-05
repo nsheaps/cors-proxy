@@ -1,0 +1,48 @@
+{
+  "name": "@nsheaps/cors-proxy",
+  "version": "0.1.0",
+  "private": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nsheaps/cors-proxy.git"
+  },
+  "description": "Cloudflare Worker CORS proxy for GitHub OAuth endpoints — shared auth service for nsheaps apps",
+  "type": "module",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "wrangler deploy --dry-run --outdir dist",
+    "test": "vitest run",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "typecheck": "tsc --noEmit",
+    "validate": "npm run lint && npm run typecheck && npm run test",
+    "check": "prettier --check '**/*.{yaml,yml,md,json}'",
+    "check:fix": "prettier --write '**/*.{yaml,yml,md,json}'",
+    "deploy": "wrangler deploy",
+    "release": "release-it",
+    "release:ci": "release-it --ci"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241205.0",
+    "@release-it/bumper": "^7.0.0",
+    "@release-it/conventional-changelog": "^10.0.0",
+    "eslint": "^9.16.0",
+    "prettier": "^3.0.0",
+    "release-it": "^18.0.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.17.0",
+    "vitest": "^2.1.0",
+    "wrangler": "^3.99.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}
