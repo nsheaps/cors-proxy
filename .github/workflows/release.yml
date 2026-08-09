@@ -31,12 +31,12 @@ jobs:
     steps:
       - name: Load secrets from 1Password
         id: secrets
-        uses: 1password/load-secrets-action@v2
+        uses: 1password/load-secrets-action@3a12b0ab99d9cd590a3e9b5a90ea017210ed9556 # v4
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_TOKEN }}
           GITHUB_PAT_N8AGENT: op://heapsinfra/gha--github--n8agent-pat/credential
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           token: ${{ env.GITHUB_PAT_N8AGENT }}
           fetch-depth: 0
@@ -47,7 +47,7 @@ jobs:
           git config user.email "n8agent@users.noreply.github.com"
 
       - name: Install mise
-        uses: jdx/mise-action@v2
+        uses: jdx/mise-action@e6a8b3978addb5a52f2b4cd9d91eafa7f0ab959d # v4
 
       - name: Install dependencies
         run: npm ci
