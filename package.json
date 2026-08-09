@@ -40,7 +40,7 @@
     "wrangler": "^3.99.0"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=20.20.2"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
