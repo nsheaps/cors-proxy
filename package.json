@@ -21,8 +21,8 @@
     "lint:fix": "eslint src/ --fix",
     "typecheck": "tsc --noEmit",
     "validate": "npm run lint && npm run typecheck && npm run test",
-    "check": "prettier --check '**/*.{yaml,yml,md,json}'",
-    "check:fix": "prettier --write '**/*.{yaml,yml,md,json}'",
+    "check": "prettier --check '**/*.{yaml,yml,md,json}' '!.github/workflows/**'",
+    "check:fix": "prettier --write '**/*.{yaml,yml,md,json}' '!.github/workflows/**'",
     "deploy": "wrangler deploy",
     "release": "release-it",
     "release:ci": "release-it --ci"
