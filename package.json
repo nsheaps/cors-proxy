@@ -21,8 +21,8 @@
     "lint:fix": "eslint src/ --fix",
     "typecheck": "tsc --noEmit",
     "validate": "npm run lint && npm run typecheck && npm run test",
-    "check": "prettier --check '**/*.{yaml,yml,md,json}'",
-    "check:fix": "prettier --write '**/*.{yaml,yml,md,json}'",
+    "check": "prettier --check '**/*.{yaml,yml,md,json}' '!.github/workflows/**'",
+    "check:fix": "prettier --write '**/*.{yaml,yml,md,json}' '!.github/workflows/**'",
     "deploy": "wrangler deploy",
     "release": "release-it",
     "release:ci": "release-it --ci"
@@ -34,7 +34,7 @@
     "eslint": "^10.7.0",
     "prettier": "^3.9.5",
     "release-it": "^20.2.1",
-    "typescript": "^7.0.2",
+    "typescript": "~6.0.3",
     "typescript-eslint": "^8.63.0",
     "vitest": "^4.1.10",
     "wrangler": "^4.110.0"
