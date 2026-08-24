@@ -31,7 +31,7 @@
     "@cloudflare/workers-types": "^5.20260715.1",
     "@release-it/bumper": "^7.0.6",
     "@release-it/conventional-changelog": "^11.0.1",
-    "eslint": "^10.7.0",
+    "eslint": "^10.8.0",
     "prettier": "^3.9.6",
     "release-it": "^20.2.1",
     "typescript": "~6.0.3",
