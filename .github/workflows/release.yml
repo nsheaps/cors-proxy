@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: Load secrets from 1Password
         id: secrets
-        uses: 1password/load-secrets-action@3a12b0ab99d9cd590a3e9b5a90ea017210ed9556 # v4
+        uses: 1password/load-secrets-action@e544b780808654ba8ceba5fb2fe2897103d92ff4 # v5
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_TOKEN }}
           GITHUB_PAT_N8AGENT: op://heapsinfra/gha--github--n8agent-pat/credential
